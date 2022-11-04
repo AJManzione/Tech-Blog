@@ -1,10 +1,13 @@
 const sequelize = require("../config/connection");
+const bcrypt = require('bcrypt');
 const {
     Model,
     DataTypes
 } = require('sequelize');
 
-class User extends Model {}
+class User extends Model {
+    //Need to add password hashing
+}
 
 User.init({
     id: {
