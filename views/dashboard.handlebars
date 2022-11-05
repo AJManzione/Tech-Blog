@@ -1,0 +1,13 @@
+
+{{#if posts.length}}
+<section>
+    <h2>Dashboard</h2>
+    <ul>
+        {{#each posts as |post|}}
+        <li>
+            {{> post-info post}}
+        </li>
+        {{/each}}
+    </ul>
+</section>
+{{/if}}
