@@ -6,7 +6,11 @@ const {
 } = require('../../models')
 
 router.get('/', (req, res) => {
-    
+    User.findAll({
+        attributes: {
+            exclude: ['password']
+        }
+    })
 })
 
 router.get('/:id', (req, res) => {
