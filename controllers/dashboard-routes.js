@@ -8,7 +8,16 @@ const {
 } = require('../models');
 
 router.get('/', (req, res) => {
-
+    Post.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
+        attributes: ['id', 'title', 'content'],
+        include: [{
+            model: Comment,
+            attributes: ['id', 'comment_body', 'post_id', 'user_id']
+        }] 
+    })
 })
 
 router.get('/edit/:id', (req, res) => {
