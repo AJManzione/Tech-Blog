@@ -1,0 +1,36 @@
+* {
+    font-family: 'Cabin', sans-serif;
+}
+
+body {
+    background-color: #41B3A3;
+    font-size: 28px;
+}
+
+
+.navbar-nav {
+    margin: auto;
+}
+
+.nav-link {
+    margin: 30px;
+}
+
+.card {
+    margin: auto;
+    width: 80vw;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.comment {
+    margin-bottom: 15px;
+    padding: 3px;
+    background-color: rgb(228, 226, 226);
+}
