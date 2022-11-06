@@ -39,18 +39,23 @@ router.get('/post/:id', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-
-})
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
+});
 
 router.get('/signup', (req, res) => {
     if(req.session.loggedIn) {
-        res.redirect('/')
+        res.redirect('/');
+        return;
     }
-
-})
+    res.render('signup');
+});
 
 router.get('*', (req, res) => {
-    res.status(404).send('404, bad request!')
-})
+    res.status(404).send('404, bad request!');
+});
 
 module.exports = router;
