@@ -8,7 +8,12 @@ const {
 // Get all comments
 router.get('/', (req, res) => {
     Comment.findAll()
-})
+    .then((data) => res.json(data))
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
 
 // Create a comment
 router.post('/', (req, res) => {
@@ -24,7 +29,7 @@ router.post('/', (req, res) => {
             res.status(400).json(err);
         });
     }
-})
+});
 
 
 module.exports = router;
