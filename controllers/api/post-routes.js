@@ -23,12 +23,20 @@ router.get('/', (req, res) => {
             }
         }]
     })
-})
+    .then((data) => res.json(data))
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
 
+// get a single post 
 router.get('/:id', (req, res) => {
 
 })
 
+
+// create a single post
 router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
@@ -42,10 +50,12 @@ router.post('/', (req, res) => {
     });
 });
 
+// update a post
 router.put('/:id', (req, res) => {
 
 })
 
+// delete a post
 router.delete('/:id', (req, res) => {
     Post.destroy({
         where: {
