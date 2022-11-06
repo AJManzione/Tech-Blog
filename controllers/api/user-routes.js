@@ -64,13 +64,39 @@ router.post('/login', (req, res) => {
 
         res.json({ 
             user: data,
-            message: 'Loggin in successfully'
+            message: 'Loggin successful'
         });
     });
-})
+
+    const validPassword = data.checkPassword(req.body.password);
+
+    if (!validPassword) {
+        res.status(400).json({
+            message: 'Incorrect password'
+        });
+        return;
+    }
+
+    req.session.save(() => {
+        req.session.user_id = data.id;
+        req.session.username = data.username;
+        req.session.loggedIn = true;
+
+        res.json({
+            user: data,
+            message: 'Loggin successful'
+        });
+    });
+});
 
 router.post('/logout', (req, res) => {
-
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        })
+    } else {
+        res.status(404).end();
+    }
 })
 
 module.exports = router;
