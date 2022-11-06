@@ -51,8 +51,8 @@ router.get('/:id', (req, res) => {
         res.json(data);
     })
     .catch(err => {
-        console.log(err)
-        res.status(500).json(err)
+        console.log(err);
+        res.status(500).json(err);
     });
 });
 
@@ -83,6 +83,24 @@ router.post('/login', (req, res) => {
         where: {
             username: req.body.username
         }
+    })
+    .then(data => {
+        if(!data) {
+            res.status(400).json({
+                message: 'No user exists with this username'
+            });
+            return;
+        }
+        req.session.save(() => {
+            req.session.user_id = data.id;
+            req.session.username = data.username;
+            req.session.loggedIn = true;
+
+            res.json({
+                user: data,
+                message: `${data.username} is now logged in`
+            });
+        });
     })
 })
 .then(data => {
