@@ -5,6 +5,7 @@ const {
     Comment
 } = require('../../models')
 
+//gets all users
 router.get('/', (req, res) => {
     User.findAll({
         attributes: {
@@ -18,10 +19,44 @@ router.get('/', (req, res) => {
     });
 });
 
+//gets a specific user
 router.get('/:id', (req, res) => {
+    User.findOne({
+        attributes: {
+            exclude: ['password']
+        },
+        where: {
+            id: req.params.id
+        },
+        include: [{
+            model: Post,
+            attributes: ['id', 'title', 'content']
+        },
+        {
+            model: Comment,
+            attributes: ['id', 'comment_body'],
+            include: {
+                model: Post,
+                attributes: ['title']
+            }
+        }]
+    })
+    .then(data => {
+        if (!data) {
+            res.status(404).json({
+                message: 'No user found'
+            });
+            return;
+        }
+        res.json(data);
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json(err)
+    });
+});
 
-})
-
+//creates a user
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
@@ -42,6 +77,7 @@ router.post('/', (req, res) => {
     })
 })
 
+//logs in the user 
 router.post('/login', (req, res) => {
     User.findOne({
         where: {
@@ -89,6 +125,7 @@ router.post('/login', (req, res) => {
     });
 });
 
+//logs out the user
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
