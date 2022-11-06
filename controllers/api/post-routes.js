@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const withAuth = require('../../utils/auth');
 const {
     User,
     Post,
@@ -51,12 +52,31 @@ router.post('/', (req, res) => {
 });
 
 // update a post
-router.put('/:id', (req, res) => {
-
-})
+router.put('/:id', withAuth, (req, res) => {
+    Post.update({
+        title: req.body.title,
+        content: req.body.post_content
+    }, { where: {
+            id: req.params.id
+        }
+    })
+    .then((data) => {
+        if (!data) {
+            res.status(404).json({
+                message: 'Unable to find post'
+            });
+            return;
+        }
+        res.json(data);
+    })
+    .catch((err) => {
+        console.log(err)
+        res.status(500).json(err)
+    });
+});
 
 // delete a post
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Post.destroy({
         where: {
             id: req.params.id
