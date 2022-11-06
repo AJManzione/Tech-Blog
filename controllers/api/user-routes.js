@@ -44,7 +44,7 @@ router.get('/:id', (req, res) => {
     .then(data => {
         if (!data) {
             res.status(404).json({
-                message: 'No user found'
+                message: 'No user with that username found'
             });
             return;
         }
@@ -87,7 +87,7 @@ router.post('/login', (req, res) => {
         .then(data => {
             if (!data) {
                 res.status(400).json({
-                    message: 'No user with that username!'
+                    message: 'No user with that username found'
                 });
                 return;
             }
@@ -99,7 +99,7 @@ router.post('/login', (req, res) => {
 
                 res.json({
                     user: data,
-                    message: 'You are now logged in!'
+                    message: 'Loggin successful'
                 });
             });
 
@@ -107,7 +107,7 @@ router.post('/login', (req, res) => {
 
             if (!validPassword) {
                 res.status(400).json({
-                    message: 'Incorrect password!'
+                    message: 'Password incorrect'
                 });
                 return;
             }
@@ -119,7 +119,7 @@ router.post('/login', (req, res) => {
 
                 res.json({
                     user: data,
-                    message: 'You are now logged in!'
+                    message: 'Loggin successful'
                 });
             });
         });

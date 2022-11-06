@@ -4,6 +4,7 @@ const {
     Post,
     Comment
 } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // Get all comments
 router.get('/', (req, res) => {
@@ -16,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 // Create a comment
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     if (req.session) {
         Comment.create({
             comment_body: req.body.comment_body,
