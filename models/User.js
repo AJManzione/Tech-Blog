@@ -6,7 +6,9 @@ const {
 } = require('sequelize');
 
 class User extends Model {
-    //Need to add password hashing
+    checkPassword(userPw) {
+        return bcrypt.compareSync(userPw, this.password);
+    }
 }
 
 User.init({
@@ -25,6 +27,16 @@ User.init({
         allowNull: false
     }
 }, {
+    hooks: {
+        async beforeCreate(data) {
+            data.password = await bcrypt.hash(data.password, 10);
+            return data;
+        },
+        async beforeUpdate(updatedData) {
+            updatedData.password = await bcrypt.hash(updatedData.password, 10);
+            return updatedData;
+        }
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
