@@ -15,8 +15,13 @@ body {
     margin: 30px;
 }
 
+.main-body {
+    display: flex;
+    justify-content: center;
+}
+
 .card {
-    margin: auto;
+    margin-top: 10vh;
     width: 80vw;
 }
 
@@ -28,11 +33,6 @@ body {
     text-align: center;
 }
 
-.comment {
-    margin-bottom: 15px;
-    padding: 3px;
-    background-color: rgb(228, 226, 226);
-}
 
 .nav-item button {
     text-decoration: none;
