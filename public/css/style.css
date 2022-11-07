@@ -7,7 +7,6 @@ body {
     font-size: 28px;
 }
 
-
 .navbar-nav {
     margin: auto;
 }
@@ -33,4 +32,11 @@ body {
     margin-bottom: 15px;
     padding: 3px;
     background-color: rgb(228, 226, 226);
+}
+
+.nav-item button {
+    text-decoration: none;
+    background-color: none;
+    border: none;
+    background: transparent;
 }
