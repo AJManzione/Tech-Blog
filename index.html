@@ -5,16 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;1,400;1,700&family=Cabin:wght@400;500;600;700&family=Prompt:wght@100;200;300;400&family=Raleway:wght@300;400&family=Roboto:ital,wght@0,100;0,400;1,100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/stylesheets/style.css">
     <title>Tech Blog</title>
 </head>
 <body>
 
-
-<nav class="navbar navbar-expand-lg bg-light">
+<!-- <nav class="navbar navbar-expand-lg bg-light">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="/">Home</a>
@@ -23,25 +19,117 @@
           <a class="nav-link" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
-         <a class="nav-link" href="#"><button id="logout" logout">Logout</button></a> 
+         <a class="nav-link" href="#"><button id="logout">Logout</button></a> 
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/login">Login</a>
         </li>
       </ul>
-</nav>
+</nav> -->
 
-<!-- <div class="main-body">
-    <div class="card">
-        <div class="card-header">
-            Featured
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-6"> 
+      <h2>Signup</h2>
+      <form class="">
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Username</label>
         </div>
-        <div class="card-body">
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Leave a Comment!</a>
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
         </div>
+        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+        <hr class="my-4">
+      </form>
     </div>
+  </div>
 </div> -->
 
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="modal fade" id="signUp">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+          <div class="modal-header">
+            <h1>Signup!</h1>
+          </div>
+          <div class="modal-body">Wow
+          </div>
+          <div class="modal-footer">
+            ok
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" data-toggle="modal" data-target="#signUp">sign up</a> 
+    </div>
+  </div>
+</div> -->
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Create an Account</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12"> 
+              <form class="">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                  <label for="floatingInput">Username</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                  <label for="floatingPassword">Password</label>
+                </div>
+                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+                <hr class="my-4">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <form class="signup-form">
+  <div>
+      <label for="username-signup">Select a Username</label>
+      <input type="text" class="entry-field" id="username-signup" />
+  </div>
+  <div>
+      <label for="password-signup">Select a password</label>
+      <input type="password" class="entry-field" id="password-signup" />
+  </div>
+  <div>
+      <button type="submit" class="login-signup-btn">Sign Up!</button>
+  </div>
+</form> -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>
