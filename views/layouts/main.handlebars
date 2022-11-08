@@ -1,46 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;1,400;1,700&family=Cabin:wght@400;500;600;700&family=Prompt:wght@100;200;300;400&family=Raleway:wght@300;400&family=Roboto:ital,wght@0,100;0,400;1,100&display=swap" rel="stylesheet">
+    <title>The Tech Blog</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <title>Tech Blog</title>
 </head>
+
 <body>
-
-
-<nav class="navbar navbar-expand-lg bg-light">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        {{#if loggedIn}}
-        <li class="nav-item">
-          <a class="nav-link" href="/dashboard">Dashboard</a>
-        </li>
-        <li class="nav-item">
-         <a class="nav-link"><button id="logout">Logout</button></a> 
-        </li>
-        {{else}}
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
-        {{/if}}
-      </ul>
-</nav>
-
-<main>
-    {{{ body }}}
-</main>
+    <div class="wrapper">
+        <header>
+            <h1>
+                <a href="/">home</a>
+            </h1>
+            <nav>
+                {{#if loggedIn}}
+                <a href="/dashboard">dashboard</a>
+                <button id="logout" class="btn-no-style logout">logout</button>
+                {{else}}
+                <a href="/login">login</a>
+                {{/if}}
+            </nav>
+        </header>
+        <div class="site-row">
+            <div class="site-name">
+                <h1>The Tech Blog</h1>
+            </div>
+        </div>
+        <main>
+            {{{ body }}}
+        </main>
+    </div>
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
-
 </body>
+
 </html>
