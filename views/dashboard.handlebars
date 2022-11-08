@@ -1,5 +1,5 @@
 <section class="new-post-section">
-    <button type="submit" class="btn" id="create-new-post">+ Create new post</button>
+    <button type="submit" class="btn btn-primary" id="create-new-post">Create new post</button>
 </section>
 
 
@@ -10,7 +10,7 @@
         {{#each posts as |post|}}
         <li>
             {{> post-info post}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
+            <a href="/dashboard/edit/{{post.id}}" class="edit-link btn btn-primary">edit post</a>
         </li>
         {{/each}}
     </ul>
