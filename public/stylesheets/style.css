@@ -1,5 +1,7 @@
 * {
     font-family: 'Cabin', sans-serif;
+    padding: 0%;
+    margin: 0%;
 }
 
 body {
@@ -20,19 +22,6 @@ body {
     justify-content: center;
 }
 
-.card {
-    margin-top: 10vh;
-    width: 80vw;
-}
-
-.card-header {
-    text-align: center;
-}
-
-.card-body {
-    text-align: center;
-}
-
 
 .nav-item button {
     text-decoration: none;
@@ -40,3 +29,15 @@ body {
     border: none;
     background: transparent;
 }
+
+#signupModal h3 {
+    padding-left: 13px;
+    font-size: 26px;
+}
+
+#signupModal p {
+    font-size: 20px;
+}
+
+
+
