@@ -4,6 +4,16 @@
     margin: 0%;
 }
 
+ul {
+    text-decoration: none;
+    list-style: none;
+}
+
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
 body {
     background-color: #41B3A3;
     font-size: 28px;
@@ -35,8 +45,7 @@ body {
 }
 
 .edit-link {
-    display: flex;
-    justify-content: center;
+
 }
 
 #create-new-post {

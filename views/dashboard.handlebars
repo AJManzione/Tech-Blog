@@ -1,21 +1,33 @@
-<section class="new-post-section">
-    <button type="submit" class="btn btn-primary" id="create-new-post">Create new post</button>
-</section>
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-12">
+            <div class="new-post-section">
+                <button type="submit" class="btn btn-primary" id="create-new-post">Create new post</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {{#if posts.length}}
-<section>
-    <h2>Your Dashboard</h2>
-    <ul class="post-list">
-        {{#each posts as |post|}}
-        <li>
-            {{> post-info post}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link btn btn-primary">edit post</a>
-        </li>
-        {{/each}}
-    </ul>
-</section>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-9">
+            <h2>Your Dashboard</h2>
+            <ul class="post-list">
+                {{#each posts as |post|}}
+                <li>
+                    {{> post-info post}}
+                    <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
 {{/if}}
+
 
 <script src="/javascript/create-post.js"></script>
 
