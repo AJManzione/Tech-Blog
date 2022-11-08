@@ -1,30 +1,37 @@
-
-<div class="container">
-    <div class="row d-flex justify-content-center">
-        <div class="col-lg-12">
-            <div class="new-post-section">
-                <button type="submit" class="btn btn-primary" id="create-new-post">Create new post</button>
-
-                {{#if posts.length}}
-                <div>
-                    <h2>Your Dashboard</h2>
-                    <ul class="post-list">
-                        {{#each posts as |post|}}
-                        <li>
-                        {{> post-info post}}
-                        <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
-                        </li>
-                        {{/each}}
-                    </ul>
-                {{/if}}
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container m-4">
+  <h1>Dashboard</h1>
+  <hr class="my-4">
+  <div class="row d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary w-25" id="create-new-post">Create new post</button>
+  </div>
 </div>
 
 
+{{#if posts.length}}
+<br>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="new-post-section">
+            <div>
 
+                <ul class="post-list">
+                    {{#each posts as |post|}}
+                    <li>
+                        {{> post-info post}}
+                    <br>
+                    <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
 
 
 <script src="/javascript/create-post.js"></script>
