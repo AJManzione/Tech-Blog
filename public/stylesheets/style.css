@@ -17,11 +17,6 @@ body {
     margin: 30px;
 }
 
-.main-body {
-    display: flex;
-    justify-content: center;
-}
-
 
 .nav-item button {
     text-decoration: none;
