@@ -5,9 +5,14 @@
     <div class="row d-flex justify-content-center">
       <button type="submit" class="btn btn-primary w-25" id="create-new-post">Create new post</button>
       <br>
+    <ul class="post-list">
         {{#each posts as |post|}}
-        {{> post-info post}}
-        <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
+        <li>
+            {{> post-info post}}
+            <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
+        </li>
+        {{/each}}
+    </ul>
         <br>
     </div>
   </div>
