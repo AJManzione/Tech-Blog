@@ -4,20 +4,20 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
-const session = require('express-session');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const hbs = exphbs.create({
     helpers
 });
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
-    secret: 'super secret secret',
+    secret: process.env.DB_SECRET,
     cookie: {},
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize,
-        checkExpirationInterval: 1000 * 60 * 10, 
+        checkExpirationInterval: 1000 * 60 * 10,
         expiration: 1000 * 60 * 30 
     })
 };
