@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
                 exclude: ['password']
             }
         })
-        .then(data => res.json(data))
+        .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -42,14 +42,14 @@ router.get('/:id', (req, res) => {
                 }
             ]
         })
-        .then(data => {
-            if (!data) {
+        .then(dbUserData => {
+            if (!dbUserData) {
                 res.status(404).json({
                     message: 'No user found with this id'
                 });
                 return;
             }
-            res.json(data);
+            res.json(dbUserData);
         })
         .catch(err => {
             console.log(err);
@@ -63,13 +63,13 @@ router.post('/', (req, res) => {
             username: req.body.username,
             password: req.body.password
         })
-        .then(data => {
+        .then(dbUserData => {
             req.session.save(() => {
-                req.session.user_id = data.id;
-                req.session.username = data.username;
+                req.session.user_id = dbUserData.id;
+                req.session.username = dbUserData.username;
                 req.session.loggedIn = true;
 
-                res.json(data);
+                res.json(dbUserData);
             });
         })
         .catch(err => {
@@ -84,8 +84,8 @@ router.post('/login', (req, res) => {
                 username: req.body.username
             }
         })
-        .then(data => {
-            if (!data) {
+        .then(dbUserData => {
+            if (!dbUserData) {
                 res.status(400).json({
                     message: 'No user with that username!'
                 });
@@ -93,17 +93,17 @@ router.post('/login', (req, res) => {
             }
 
             req.session.save(() => {
-                req.session.user_id = data.id;
-                req.session.username = data.username;
+                req.session.user_id = dbUserData.id;
+                req.session.username = dbUserData.username;
                 req.session.loggedIn = true;
 
                 res.json({
-                    user: data,
+                    user: dbUserData,
                     message: 'You are now logged in!'
                 });
             });
 
-            const validPassword = data.checkPassword(req.body.password);
+            const validPassword = dbUserData.checkPassword(req.body.password);
 
             if (!validPassword) {
                 res.status(400).json({
@@ -113,12 +113,12 @@ router.post('/login', (req, res) => {
             }
 
             req.session.save(() => {
-                req.session.user_id = data.id;
-                req.session.username = data.username;
+                req.session.user_id = dbUserData.id;
+                req.session.username = dbUserData.username;
                 req.session.loggedIn = true;
 
                 res.json({
-                    user: data,
+                    user: dbUserData,
                     message: 'You are now logged in!'
                 });
             });
