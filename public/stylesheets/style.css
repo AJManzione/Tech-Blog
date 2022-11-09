@@ -61,5 +61,7 @@ h1 {
 }
 
 .edit-link {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

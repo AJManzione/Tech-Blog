@@ -8,9 +8,9 @@
       {{#if posts.length}}
     <ul class="post-list">
         {{#each posts as |post|}}
-        <li>
+        <li class="edit-link">
             {{> post-info post}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
+            <a href="/dashboard/edit/{{post.id}}">edit post</a>
         </li>
         {{/each}}
     </ul>
