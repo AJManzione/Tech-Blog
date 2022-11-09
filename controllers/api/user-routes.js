@@ -61,7 +61,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     User.create({
             username: req.body.username,
-            password: req.body.password
+            password: req.body.password.toString()
         })
         .then(dbUserData => {
             req.session.save(() => {
@@ -103,7 +103,7 @@ router.post('/login', (req, res) => {
                 });
             });
 
-            const validPassword = dbUserData.checkPassword(req.body.password);
+            const validPassword = dbUserData.checkPassword(req.body.password.toString());
 
             if (!validPassword) {
                 res.status(400).json({
