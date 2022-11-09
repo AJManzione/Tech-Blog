@@ -3,81 +3,81 @@ const {
     User,
     Post,
     Comment
-} = require('../../models')
+} = require('../../models');
 
-//gets all users
+// Get all users
 router.get('/', (req, res) => {
     User.findAll({
-        attributes: {
-            exclude: ['password']
-        }
-    })
-    .then(data => res.json(data))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+            attributes: {
+                exclude: ['password']
+            }
+        })
+        .then(data => res.json(data))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
-//gets a specific user
+// Get specific user
 router.get('/:id', (req, res) => {
     User.findOne({
-        attributes: {
-            exclude: ['password']
-        },
-        where: {
-            id: req.params.id
-        },
-        include: [{
-            model: Post,
-            attributes: ['id', 'title', 'content', 'created_at']
-        },
-        {
-            model: Comment,
-            attributes: ['id', 'comment_body', 'created_at'],
-            include: {
-                model: Post,
-                attributes: ['title']
+            attributes: {
+                exclude: ['password']
+            },
+            where: {
+                id: req.params.id
+            },
+            include: [{
+                    model: Post,
+                    attributes: ['id', 'title', 'content', 'created_at']
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment_text', 'created_at'],
+                    include: {
+                        model: Post,
+                        attributes: ['title']
+                    }
+                }
+            ]
+        })
+        .then(data => {
+            if (!data) {
+                res.status(404).json({
+                    message: 'No user found with this id'
+                });
+                return;
             }
-        }]
-    })
-    .then(data => {
-        if (!data) {
-            res.status(404).json({
-                message: 'No user with that username found'
-            });
-            return;
-        }
-        res.json(data);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+            res.json(data);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
-//creates a user
+// Create a user
 router.post('/', (req, res) => {
     User.create({
-        username: req.body.username,
-        password: req.body.password
-    })
-    .then(data => {
-        req.session.save(() => {
-            req.session.user_id = data.id;
-            req.session.username = data.username;
-            req.session.loggedIn = true;
+            username: req.body.username,
+            password: req.body.password
+        })
+        .then(data => {
+            req.session.save(() => {
+                req.session.user_id = data.id;
+                req.session.username = data.username;
+                req.session.loggedIn = true;
 
-            res.json(data);
+                res.json(data);
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
         });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
+})
 
-//logs in the user 
 router.post('/login', (req, res) => {
     User.findOne({
             where: {
@@ -87,7 +87,7 @@ router.post('/login', (req, res) => {
         .then(data => {
             if (!data) {
                 res.status(400).json({
-                    message: 'No user with that username found'
+                    message: 'No user with that username!'
                 });
                 return;
             }
@@ -99,7 +99,7 @@ router.post('/login', (req, res) => {
 
                 res.json({
                     user: data,
-                    message: 'Loggin successful'
+                    message: 'You are now logged in!'
                 });
             });
 
@@ -107,7 +107,7 @@ router.post('/login', (req, res) => {
 
             if (!validPassword) {
                 res.status(400).json({
-                    message: 'Password incorrect'
+                    message: 'Incorrect password!'
                 });
                 return;
             }
@@ -119,13 +119,12 @@ router.post('/login', (req, res) => {
 
                 res.json({
                     user: data,
-                    message: 'Loggin successful'
+                    message: 'You are now logged in!'
                 });
             });
         });
 });
 
-//logs out the user
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
@@ -134,6 +133,7 @@ router.post('/logout', (req, res) => {
     } else {
         res.status(404).end();
     }
+
 });
 
 module.exports = router;
