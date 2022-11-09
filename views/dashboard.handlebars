@@ -8,8 +8,10 @@
           {{#each posts as |post|}}
           {{> post-info post}}
           <br>
-          <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
-          {{/each}}
+    </div>
+    <div class="row d-flex justify-content-center">
+        <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
+        {{/each}}
     </div>
   </div>
 </div>
