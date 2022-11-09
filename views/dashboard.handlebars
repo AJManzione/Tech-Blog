@@ -9,14 +9,14 @@
         {{> post-info post}}
         <br>
     </div>
-    <div class="container mt-1">
-      <div class="row d-flex justify-content-center">
-          <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
-      </div>
-    </div>
-    {{/each}}
   </div>
 </div>
+<div class="container mt-1">
+  <div class="row d-flex justify-content-center">
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
+  </div>
+</div>
+        {{/each}}
 
 {{#if posts.length}}
 <br>
@@ -27,4 +27,3 @@
 
 
 <script src="/javascript/create-post.js"></script>
-
